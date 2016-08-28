@@ -18,6 +18,7 @@ namespace SimuladorAcoes.Domain.Entidades
         public string LogoEmpresaUrl { get; set; }
 
         public virtual ICollection<Transacao> Transacoes { get; set; }
-
+        public virtual ICollection<Noticia> Noticias { get; set; }
     }
 }
+
