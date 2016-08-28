@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NubankHack.SimuladorAcoes", "NubankHack.SimuladorAcoes\NubankHack.SimuladorAcoes.csproj", "{22031F71-1048-4929-8D3E-310B9E816BE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimuladorAcoes.Data", "SimuladorAcoes.Data\SimuladorAcoes.Data.csproj", "{F3B79C07-7245-4274-9E8F-1A7552EC9435}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimuladorAcoes.Domain", "SimuladorAcoes.Domain\SimuladorAcoes.Domain.csproj", "{13BF4140-4F02-449C-9588-9A2C545F8F4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{22031F71-1048-4929-8D3E-310B9E816BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22031F71-1048-4929-8D3E-310B9E816BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22031F71-1048-4929-8D3E-310B9E816BE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3B79C07-7245-4274-9E8F-1A7552EC9435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3B79C07-7245-4274-9E8F-1A7552EC9435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3B79C07-7245-4274-9E8F-1A7552EC9435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3B79C07-7245-4274-9E8F-1A7552EC9435}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13BF4140-4F02-449C-9588-9A2C545F8F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13BF4140-4F02-449C-9588-9A2C545F8F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13BF4140-4F02-449C-9588-9A2C545F8F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13BF4140-4F02-449C-9588-9A2C545F8F4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
