@@ -12,7 +12,9 @@ namespace SimuladorAcoes.Data.Configurations
             Property(x => x.TituloConquista)
                 .HasMaxLength(100);
 
-            
+            Property(x => x.DescricaoConquista)
+                .IsOptional()
+                .HasMaxLength(150);
         }
     }
 }

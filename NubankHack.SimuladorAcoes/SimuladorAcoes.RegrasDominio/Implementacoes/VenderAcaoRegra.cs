@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SimuladorAcoes.Domain.Entidades;
+using SimuladorAcoes.RegrasDominio.Implementacoes.VerificacaoConquistas;
 
 namespace SimuladorAcoes.RegrasDominio.Implementacoes
 {
@@ -38,7 +39,19 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes
 
                 acaoEmEstoque.Usuario.SaldoUsuario += acaoEmEstoque.Acao.CotacaoRecente * _qtdVendida;
 
+                VerificarConquistas(ctx, acaoEmEstoque.UsuarioId);
+
                 ctx.SaveChanges();
+            }
+        }
+
+        private void VerificarConquistas(SimuladorAcoesContext ctx, int usuarioId)
+        {
+            var conquistasObtidas = new VerificadorGeralConquistas(usuarioId, ctx).VerificarConquistasVendaAindaNaoAlcancadas();
+
+            foreach (var c in conquistasObtidas)
+            {
+                ctx.Conquista.Add(c);
             }
         }
 

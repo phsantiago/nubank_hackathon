@@ -52,6 +52,14 @@
     <Compile Include="Implementacoes\ComprarAcaoRegra.cs" />
     <Compile Include="Implementacoes\ListarAcoesPertencentesAoUsuario.cs" />
     <Compile Include="Implementacoes\VenderAcaoRegra.cs" />
+    <Compile Include="Implementacoes\VerificacaoConquistas\ComprarMaisDe300ReaisEmAcoes.cs" />
+    <Compile Include="Implementacoes\VerificacaoConquistas\ConquistaCompraPrimeiraAcao.cs" />
+    <Compile Include="Implementacoes\VerificacaoConquistas\ConquistaConservador.cs" />
+    <Compile Include="Implementacoes\VerificacaoConquistas\ConquistaHipster.cs" />
+    <Compile Include="Implementacoes\VerificacaoConquistas\ConquistaVendaMaisDe300EmAcoes.cs" />
+    <Compile Include="Implementacoes\VerificacaoConquistas\VerificadorGeralConquistas.cs" />
+    <Compile Include="Implementacoes\VerificacaoConquistas\VerificarConquistaVender1Acao.cs" />
+    <Compile Include="Interfaces\IConquista.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,7 +77,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
     <Folder Include="ValidacaoConquistas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

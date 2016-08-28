@@ -17,6 +17,8 @@ namespace SimuladorAcoes.Data.Configurations
             HasRequired(x => x.DefinicaoConquista)
                 .WithMany()
                 .HasForeignKey(x => x.IdDefinicaoConquista);
+
+           
         }
     }
 }

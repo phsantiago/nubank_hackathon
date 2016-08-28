@@ -1,5 +1,6 @@
 ﻿using SimuladorAcoes.Data.Context;
 using SimuladorAcoes.Domain.Entidades;
+using SimuladorAcoes.RegrasDominio.Implementacoes.VerificacaoConquistas;
 using System;
 using System.Linq;
 
@@ -42,7 +43,19 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes
 
                 AdicionarEstoque(usuario, acao, ctx);
 
+                VerificarConquistas(usuario, ctx);
+
                 ctx.SaveChanges();
+            }
+        }
+
+        private void VerificarConquistas(Usuario usuario, SimuladorAcoesContext ctx)
+        {
+            var conquistasObtidas = new VerificadorGeralConquistas(usuario.IdUsuario, ctx).VerificarConquistasCompraAindaNaoAlcancadas();
+
+            foreach (var c in conquistasObtidas)
+            {
+                ctx.Conquista.Add(c);
             }
         }
 
