@@ -10,6 +10,7 @@ namespace NubankHack.SimuladorAcoes.ViewModels
         public string TituloConquista { get; set; }
         public string DescricaoConquista { get; set; }
         public bool Completada { get; set; }
+        public decimal ValorDesconto { get; set; }
     }
 
     public static class ExibicaoConquistaConverter
@@ -20,7 +21,8 @@ namespace NubankHack.SimuladorAcoes.ViewModels
                 Completada = ctx.Conquista.Any(x => x.IdUsuario == userId && x.IdDefinicaoConquista == o.IdDefinicaoConquista),
                 DescricaoConquista = o.DescricaoConquista,
                 IdConquista = o.IdDefinicaoConquista,
-                TituloConquista = o.TituloConquista
+                TituloConquista = o.TituloConquista,
+                ValorDesconto = o.ValorDesconto
             };
         }
     }

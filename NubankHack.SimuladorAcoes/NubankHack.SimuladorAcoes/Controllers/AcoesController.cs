@@ -44,12 +44,12 @@ namespace NubankHack.SimuladorAcoes.Controllers
 
         [HttpPost]
         [Route("Acoes/Comprar")]
-        public RequestResponse<List<ConquistaAlcancadaViewModel>> Comprar(int idUsuario, int quantidade, int idAcao)
+        public RequestResponse<List<ConquistaAlcancadaViewModel>> Comprar([FromBody]ComprarVenderViewModel dados)
         {
             try
             {
                 var conquistasViewModel = new List<ConquistaAlcancadaViewModel>();
-                var handler = new ComprarAcaoRegra(idAcao, quantidade, idUsuario);
+                var handler = new ComprarAcaoRegra(dados.idAcao, dados.quantidade, dados.idUsuario);
 
                 var conquistas = handler.ComprarAcao();
 
@@ -71,12 +71,12 @@ namespace NubankHack.SimuladorAcoes.Controllers
 
         [HttpPost]
         [Route("Acoes/Vender")]
-        public RequestResponse<List<ConquistaAlcancadaViewModel>> Vender(int idUsuario, int quantidade, int idAcao)
+        public RequestResponse<List<ConquistaAlcancadaViewModel>> Vender([FromBody]ComprarVenderViewModel dados)
         {
             try
             {
                 var conquistasViewModel = new List<ConquistaAlcancadaViewModel>();
-                var handler = new VenderAcaoRegra(idAcao, quantidade, idUsuario);
+                var handler = new VenderAcaoRegra(dados.idAcao, dados.quantidade, dados.idUsuario);
 
                 var conquistas = handler.VenderAcao();
 

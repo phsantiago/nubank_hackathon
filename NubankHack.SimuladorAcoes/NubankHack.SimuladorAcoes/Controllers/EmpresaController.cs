@@ -1,6 +1,7 @@
 ﻿using NubankHack.SimuladorAcoes.ViewModels;
 using SimuladorAcoes.Data.Context;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -24,6 +25,14 @@ namespace NubankHack.SimuladorAcoes.Controllers
 
                 return ret;
             }
+        }
+
+        [HttpGet]
+        [Route("Empresa/Grafico")]
+        public List<GraficoViewModel> Grafico(int idEmpresa)
+        {
+            var dadosGrafico = GetDataGrafico.GetListDadosGrafico();
+            return dadosGrafico.Where(x => x.IdEmpresa == idEmpresa).ToList();
         }
     }
 }

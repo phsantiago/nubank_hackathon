@@ -12,7 +12,7 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes.VerificacaoConquistas
 
         public Conquista VerificarSeConquistaFoiAlcancada(int idUsuario, DefinicaoConquista conquistaAVerificar, SimuladorAcoesContext ctx)
         {
-            if (ctx.Transacoes.Any(x => x.AcaoComprada.ValorDeMercado < ValorMercadoConquista))
+            if (ctx.Transacoes.Local.Any(x => x.AcaoComprada.ValorDeMercado < ValorMercadoConquista))
             {
                 return new Conquista()
                 {
