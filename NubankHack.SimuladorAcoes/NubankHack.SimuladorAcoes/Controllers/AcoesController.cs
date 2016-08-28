@@ -1,5 +1,6 @@
 ﻿using NubankHack.SimuladorAcoes.ViewModels;
 using SimuladorAcoes.Data.Context;
+using SimuladorAcoes.Domain.Entidades;
 using SimuladorAcoes.RegrasDominio.Implementacoes;
 using System;
 using System.Collections.Generic;
@@ -43,37 +44,46 @@ namespace NubankHack.SimuladorAcoes.Controllers
 
         [HttpPost]
         [Route("Acoes/Comprar")]
-        public RequestResponse Comprar(int idUsuario, int quantidade, int idAcao)
+        public RequestResponse<List<Conquista>> Comprar(int idUsuario, int quantidade, int idAcao)
         {
             try
             {
                 var handler = new ComprarAcaoRegra(idAcao, quantidade, idUsuario);
 
-                handler.ComprarAcao();
+                var conquistas = handler.ComprarAcao();
 
-                return new RequestResponse(0, "Sucesso");
+                var ret = new RequestResponse<List<Conquista>>();
+                ret.ReturnObject = conquistas;
+                ret.Code = 0;
+                ret.Message = "Sucesso";
+                return ret;
             }
             catch (Exception ex)
             {
-                return new RequestResponse(500, ex.Message);
+                return new RequestResponse<List<Conquista>>(500, ex.Message);
             }
         }
 
         [HttpPost]
         [Route("Acoes/Vender")]
-        public RequestResponse Vender(int idUsuario, int quantidade, int idAcao)
+        public RequestResponse<List<Conquista>> Vender(int idUsuario, int quantidade, int idAcao)
         {
             try
             {
                 var handler = new VenderAcaoRegra(idAcao, quantidade, idUsuario);
 
-                handler.VenderAcao();
+                var conquistas = handler.VenderAcao();
 
-                return new RequestResponse(0, "Sucesso");
+                var ret = new RequestResponse<List<Conquista>>();
+                ret.ReturnObject = conquistas;
+                ret.Code = 0;
+                ret.Message = "Sucesso";
+
+                return ret;
             }
             catch (Exception ex)
             {
-                return new RequestResponse(500, ex.Message);
+                return new RequestResponse<List<Conquista>>(500, ex.Message);
             }
         }
     }

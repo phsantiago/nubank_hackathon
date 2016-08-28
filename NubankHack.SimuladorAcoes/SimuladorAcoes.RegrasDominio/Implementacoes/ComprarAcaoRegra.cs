@@ -2,6 +2,7 @@
 using SimuladorAcoes.Domain.Entidades;
 using SimuladorAcoes.RegrasDominio.Implementacoes.VerificacaoConquistas;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SimuladorAcoes.RegrasDominio.Implementacoes
@@ -21,7 +22,7 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes
                 throw new Exception("Quantidade deve ser maior que 0");
         }
 
-        public void ComprarAcao()
+        public List<Conquista> ComprarAcao()
         {
             using (var ctx = new SimuladorAcoesContext())
             {
@@ -43,13 +44,15 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes
 
                 AdicionarEstoque(usuario, acao, ctx);
 
-                VerificarConquistas(usuario, ctx);
+                var ret = VerificarConquistas(usuario, ctx);
 
                 ctx.SaveChanges();
+
+                return ret;
             }
         }
 
-        private void VerificarConquistas(Usuario usuario, SimuladorAcoesContext ctx)
+        private List<Conquista> VerificarConquistas(Usuario usuario, SimuladorAcoesContext ctx)
         {
             var conquistasObtidas = new VerificadorGeralConquistas(usuario.IdUsuario, ctx).VerificarConquistasCompraAindaNaoAlcancadas();
 
@@ -57,6 +60,8 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes
             {
                 ctx.Conquista.Add(c);
             }
+
+            return conquistasObtidas;
         }
 
         private void AdicionarEstoque(Usuario usuario, AcaoEmpresa acao, SimuladorAcoesContext ctx)

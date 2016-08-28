@@ -24,7 +24,7 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes
                 throw new Exception("Quantidade deve ser maior que 0");
         }
 
-        public void VenderAcao()
+        public List<Conquista> VenderAcao()
         {
             using (var ctx = new SimuladorAcoesContext())
             {
@@ -39,13 +39,15 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes
 
                 acaoEmEstoque.Usuario.SaldoUsuario += acaoEmEstoque.Acao.CotacaoRecente * _qtdVendida;
 
-                VerificarConquistas(ctx, acaoEmEstoque.UsuarioId);
+                var conquistas = VerificarConquistas(ctx, acaoEmEstoque.UsuarioId);
 
                 ctx.SaveChanges();
+
+                return conquistas;
             }
         }
 
-        private void VerificarConquistas(SimuladorAcoesContext ctx, int usuarioId)
+        private List<Conquista> VerificarConquistas(SimuladorAcoesContext ctx, int usuarioId)
         {
             var conquistasObtidas = new VerificadorGeralConquistas(usuarioId, ctx).VerificarConquistasVendaAindaNaoAlcancadas();
 
@@ -53,6 +55,8 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes
             {
                 ctx.Conquista.Add(c);
             }
+
+            return conquistasObtidas;
         }
 
         private void IncluirTransacaoVenda(SimuladorAcoesContext ctx, EstoqueAcoes acaoEmEstoque)
