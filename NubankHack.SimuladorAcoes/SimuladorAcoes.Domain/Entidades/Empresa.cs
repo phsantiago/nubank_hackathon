@@ -8,5 +8,8 @@ namespace SimuladorAcoes.Domain.Entidades
 {
     public class Empresa
     {
+        public int IdEmpresa { get; set; }
+        public string NomeEmpresa { get; set; }
+        public decimal ValorDeMercado { get; set; }
     }
 }
