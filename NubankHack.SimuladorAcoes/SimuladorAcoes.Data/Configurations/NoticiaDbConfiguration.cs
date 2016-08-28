@@ -18,6 +18,10 @@ namespace SimuladorAcoes.Data.Configurations
             Property(x => x.Descricao)
                 .HasMaxLength(500);
 
+            Property(x => x.TituloNoticia)
+                .IsOptional()
+                .HasMaxLength(75);
+
             HasRequired(x => x.EmpresaReferente)
                 .WithMany(n => n.Noticias)
                 .HasForeignKey(x => x.EmpresaId);

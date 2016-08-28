@@ -10,7 +10,7 @@
             Code = code;
             Message = message;
         }
-        protected RequestResponse()
+        public RequestResponse()
         {
 
         }

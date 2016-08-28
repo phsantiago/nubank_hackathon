@@ -7,6 +7,7 @@
         public string UrlNoticia { get; set; }
         public string UrlImagemNoticia { get; set; }
         public int EmpresaId { get; set; }
+        public string TituloNoticia { get; set; }
 
         public virtual AcaoEmpresa EmpresaReferente { get; set; }
     }

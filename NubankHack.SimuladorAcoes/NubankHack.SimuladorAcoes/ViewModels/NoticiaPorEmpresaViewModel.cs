@@ -7,6 +7,7 @@ namespace NubankHack.SimuladorAcoes.ViewModels
         public string Descricao { get; set; }
         public string UrlNoticia { get; set; }
         public string UrlImagemNoticia { get; set; }
+        public string TituloNoticia { get; set; }
     }
 
     public static class NoticiaPorEmpresaViewModelConverter
@@ -16,7 +17,8 @@ namespace NubankHack.SimuladorAcoes.ViewModels
             return new NoticiaPorEmpresaViewModel() {
                 Descricao = o.Descricao,
                 UrlImagemNoticia = o.UrlImagemNoticia,
-                UrlNoticia = o.UrlNoticia
+                UrlNoticia = o.UrlNoticia,
+                TituloNoticia = o.TituloNoticia
             };
         }
     }
