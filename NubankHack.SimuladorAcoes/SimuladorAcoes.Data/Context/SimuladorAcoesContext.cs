@@ -12,7 +12,11 @@ namespace SimuladorAcoes.Data.Context
         {
         }
 
-        public IDbSet<Empresa> Empresa { get; set; }
+        public IDbSet<AcaoEmpresa> Empresa { get; set; }
+        public IDbSet<Conquista> Conquista { get; set; }
+        public IDbSet<DefinicaoConquista> DefinicaoConquista { get; set; }
+        public IDbSet<Transacao> MyProperty { get; set; }
+        public IDbSet<Usuario> Usuario { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -25,6 +29,10 @@ namespace SimuladorAcoes.Data.Context
 
 
             modelBuilder.Configurations.Add(new EmpresaDbConfig());
+            modelBuilder.Configurations.Add(new DefinicaoConquistaDbConfig());
+            modelBuilder.Configurations.Add(new ConquistaDbConfig());
+            modelBuilder.Configurations.Add(new TransacaoDbConfig());
+            modelBuilder.Configurations.Add(new UsuarioDbConfig());
         }
     }
 }

@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace SimuladorAcoes.Data.Configurations
 {
-    public class EmpresaDbConfig : EntityTypeConfiguration<AcaoEmpresa>
+    public class UsuarioDbConfig : EntityTypeConfiguration<Usuario>
     {
-        public EmpresaDbConfig()
+        public UsuarioDbConfig()
         {
-            HasKey(x => x.IdEmpresa);
+            HasKey(x => x.IdUsuario);
+
+
         }
     }
 }

@@ -49,7 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\ConquistaDbConfig.cs" />
+    <Compile Include="Configurations\DefinicaoConquistaDbConfig.cs" />
     <Compile Include="Configurations\EmpresaDbConfig.cs" />
+    <Compile Include="Configurations\TransacaoDbConfig.cs" />
+    <Compile Include="Configurations\UsuarioDbConfig.cs" />
     <Compile Include="Context\SimuladorAcoesContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

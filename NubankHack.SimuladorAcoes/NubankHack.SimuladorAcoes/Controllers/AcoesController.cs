@@ -13,7 +13,7 @@ namespace NubankHack.SimuladorAcoes.Controllers
     {
         [HttpGet]
         [Route("Acoes/Teste")]
-        public List<Empresa> Empresas()
+        public List<AcaoEmpresa> Empresas()
         {
             using (var ctx = new SimuladorAcoesContext())
             {

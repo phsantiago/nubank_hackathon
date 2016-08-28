@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SimuladorAcoes.Domain.Entidades
 {
@@ -13,6 +9,9 @@ namespace SimuladorAcoes.Domain.Entidades
         public string SenhaUsuario { get; set; }
         public decimal SaldoUsuario { get; set; }
         public decimal DescontoAcumuladoUsuario { get; set; }
+
+        public virtual ICollection<Conquista> Conquistas { get; set; }
+        public virtual ICollection<Transacao> Transacoes { get; set; }
 
     }
 }

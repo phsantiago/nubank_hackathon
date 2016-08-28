@@ -41,7 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidades\Conquista.cs" />
-    <Compile Include="Entidades\Empresa.cs" />
+    <Compile Include="Entidades\DefinicaoConquista.cs" />
+    <Compile Include="Entidades\AcaoEmpresa.cs" />
     <Compile Include="Entidades\Transacao.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

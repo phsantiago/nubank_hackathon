@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SimuladorAcoes.Domain.Entidades
 {
-    public class Empresa
+    public class AcaoEmpresa
     {
         public int IdEmpresa { get; set; }
         public string NomeEmpresa { get; set; }
@@ -19,6 +15,8 @@ namespace SimuladorAcoes.Domain.Entidades
         public decimal CotacaoRecente { get; set; }
         public decimal Variacao { get; set; }
         public decimal UltimoFechamento { get; set; }
+
+        public virtual ICollection<Transacao> Transacoes { get; set; }
 
     }
 }
