@@ -9,6 +9,7 @@ namespace SimuladorAcoes.Domain.Entidades
         public string SenhaUsuario { get; set; }
         public decimal SaldoUsuario { get; set; }
         public decimal DescontoAcumuladoUsuario { get; set; }
+        public string UrlImagemUsuario { get; set; }
 
         public virtual ICollection<Conquista> Conquistas { get; set; }
         public virtual ICollection<Transacao> Transacoes { get; set; }

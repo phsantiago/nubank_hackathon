@@ -59,6 +59,7 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes
             foreach (var c in conquistasObtidas)
             {
                 ctx.Conquista.Add(c);
+                usuario.DescontoAcumuladoUsuario += c.DefinicaoConquista.ValorDesconto;
             }
 
             return conquistasObtidas;

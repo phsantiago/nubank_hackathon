@@ -13,16 +13,12 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes.VerificacaoConquistas
     {
         public Conquista VerificarSeConquistaFoiAlcancada(int idUsuario, DefinicaoConquista conquistaAVerificar, SimuladorAcoesContext ctx)
         {
-            if (ctx.Transacoes.Any(x => x.UsuarioId == idUsuario && x.CompraOuVenda == TipoTransacao.Compra))
+            return new Conquista()
             {
-                return new Conquista() {
-                    DataConquista = DateTime.Now,
-                    DefinicaoConquista = conquistaAVerificar,
-                    IdUsuario = idUsuario
-                };
-            }
-            else
-                return null;
+                DataConquista = DateTime.Now,
+                DefinicaoConquista = conquistaAVerificar,
+                IdUsuario = idUsuario
+            };
         }
     }
 }

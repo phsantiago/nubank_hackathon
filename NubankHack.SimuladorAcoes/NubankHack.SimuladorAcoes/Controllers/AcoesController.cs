@@ -44,23 +44,28 @@ namespace NubankHack.SimuladorAcoes.Controllers
 
         [HttpPost]
         [Route("Acoes/Comprar")]
-        public RequestResponse<List<Conquista>> Comprar(int idUsuario, int quantidade, int idAcao)
+        public RequestResponse<List<ConquistaAlcancadaViewModel>> Comprar(int idUsuario, int quantidade, int idAcao)
         {
             try
             {
+                var conquistasViewModel = new List<ConquistaAlcancadaViewModel>();
                 var handler = new ComprarAcaoRegra(idAcao, quantidade, idUsuario);
 
                 var conquistas = handler.ComprarAcao();
 
-                var ret = new RequestResponse<List<Conquista>>();
-                ret.ReturnObject = conquistas;
+                var ret = new RequestResponse<List<ConquistaAlcancadaViewModel>>();
+
+                foreach (var item in conquistas)
+                    conquistasViewModel.Add(item.DefinicaoConquista.ConvertToViewModel());
+
+                ret.ReturnObject = conquistasViewModel;
                 ret.Code = 0;
                 ret.Message = "Sucesso";
                 return ret;
             }
             catch (Exception ex)
             {
-                return new RequestResponse<List<Conquista>>(500, ex.Message);
+                return new RequestResponse<List<ConquistaAlcancadaViewModel>>(500, ex.Message);
             }
         }
 

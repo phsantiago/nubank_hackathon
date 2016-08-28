@@ -150,16 +150,19 @@
     <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\NoticiaController.cs" />
     <Compile Include="Controllers\TransacaoController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ConquistaAlcancadaViewModel.cs" />
     <Compile Include="ViewModels\EmpresasMenuPrincipalViewModel.cs" />
     <Compile Include="ViewModels\ExibicaoConquistasViewModel.cs" />
     <Compile Include="ViewModels\ListaEstoqueUsuarioViewModel.cs" />
     <Compile Include="ViewModels\LogCompraVendaViewModel.cs" />
     <Compile Include="ViewModels\NoticiaPorEmpresaViewModel.cs" />
     <Compile Include="ViewModels\RequestResponse.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

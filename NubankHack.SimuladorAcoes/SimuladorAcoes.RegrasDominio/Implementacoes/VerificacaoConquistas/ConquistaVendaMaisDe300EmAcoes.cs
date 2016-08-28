@@ -13,7 +13,12 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes.VerificacaoConquistas
     {
         public Conquista VerificarSeConquistaFoiAlcancada(int idUsuario, DefinicaoConquista conquistaAVerificar, SimuladorAcoesContext ctx)
         {
-            if (ctx.Transacoes.Where(x => x.CompraOuVenda == TipoTransacao.Venda && x.UsuarioId == idUsuario).Sum(y => y.ValorTransacao * y.QtdTransacao) > 300)
+            var transacoesUsuario = ctx.Transacoes.Where(x => x.CompraOuVenda == TipoTransacao.Venda && x.UsuarioId == idUsuario);
+
+            if (!transacoesUsuario.Any())
+                return null;
+
+            if (transacoesUsuario.Sum(y => y.ValorTransacao * y.QtdTransacao) > 300)
             {
                 return new Conquista()
                 {

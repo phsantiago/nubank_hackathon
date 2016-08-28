@@ -14,6 +14,10 @@ namespace SimuladorAcoes.Data.Configurations
 
             Property(x => x.SenhaUsuario)
                 .HasMaxLength(100);
+
+            Property(x => x.UrlImagemUsuario)
+                .IsOptional()
+                .HasMaxLength(250);
         }
     }
 }

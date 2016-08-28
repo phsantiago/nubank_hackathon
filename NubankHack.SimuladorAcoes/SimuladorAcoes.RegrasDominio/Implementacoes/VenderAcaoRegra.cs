@@ -39,7 +39,7 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes
 
                 acaoEmEstoque.Usuario.SaldoUsuario += acaoEmEstoque.Acao.CotacaoRecente * _qtdVendida;
 
-                var conquistas = VerificarConquistas(ctx, acaoEmEstoque.UsuarioId);
+                var conquistas = VerificarConquistas(ctx, acaoEmEstoque.Usuario);
 
                 ctx.SaveChanges();
 
@@ -47,13 +47,14 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes
             }
         }
 
-        private List<Conquista> VerificarConquistas(SimuladorAcoesContext ctx, int usuarioId)
+        private List<Conquista> VerificarConquistas(SimuladorAcoesContext ctx, Usuario usuario)
         {
-            var conquistasObtidas = new VerificadorGeralConquistas(usuarioId, ctx).VerificarConquistasVendaAindaNaoAlcancadas();
+            var conquistasObtidas = new VerificadorGeralConquistas(usuario.IdUsuario, ctx).VerificarConquistasVendaAindaNaoAlcancadas();
 
             foreach (var c in conquistasObtidas)
             {
                 ctx.Conquista.Add(c);
+                usuario.DescontoAcumuladoUsuario += c.DefinicaoConquista.ValorDesconto;
             }
 
             return conquistasObtidas;
