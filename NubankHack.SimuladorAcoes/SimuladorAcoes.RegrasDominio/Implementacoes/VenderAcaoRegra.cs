@@ -28,7 +28,9 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes
         {
             using (var ctx = new SimuladorAcoesContext())
             {
-                var acaoEmEstoque = ctx.EstoqueAcoes.Single(x => x.EmpresaId == _acaoVendidaId && x.UsuarioId == _idUsuarioVendedor);
+                var acaoEmEstoque = ctx.EstoqueAcoes.SingleOrDefault(x => x.EmpresaId == _acaoVendidaId && x.UsuarioId == _idUsuarioVendedor);
+                if (acaoEmEstoque == null)
+                    throw new Exception("Ação não localizada");
 
                 if (_qtdVendida > acaoEmEstoque.Quantidade)
                     throw new Exception("Não é possível vender mais ações do que possui");

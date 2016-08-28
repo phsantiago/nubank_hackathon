@@ -13,6 +13,9 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes.VerificacaoConquistas
     {
         public Conquista VerificarSeConquistaFoiAlcancada(int idUsuario, DefinicaoConquista conquistaAVerificar, SimuladorAcoesContext ctx)
         {
+            if (!ctx.Transacoes.Local.Any(x => x.CompraOuVenda == TipoTransacao.Compra))
+                return null;
+
             return new Conquista()
             {
                 DataConquista = DateTime.Now,
