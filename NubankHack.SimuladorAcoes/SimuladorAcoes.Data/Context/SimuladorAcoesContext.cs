@@ -15,7 +15,7 @@ namespace SimuladorAcoes.Data.Context
         public IDbSet<AcaoEmpresa> Empresa { get; set; }
         public IDbSet<Conquista> Conquista { get; set; }
         public IDbSet<DefinicaoConquista> DefinicaoConquista { get; set; }
-        public IDbSet<Transacao> MyProperty { get; set; }
+        public IDbSet<Transacao> Transacoes { get; set; }
         public IDbSet<Usuario> Usuario { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

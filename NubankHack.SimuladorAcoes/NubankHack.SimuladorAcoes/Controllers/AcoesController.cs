@@ -1,5 +1,7 @@
-﻿using SimuladorAcoes.Data.Context;
+﻿using NubankHack.SimuladorAcoes.ViewModels;
+using SimuladorAcoes.Data.Context;
 using SimuladorAcoes.Domain.Entidades;
+using SimuladorAcoes.RegrasDominio.Implementacoes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +13,21 @@ namespace NubankHack.SimuladorAcoes.Controllers
 {
     public class AcoesController : ApiController
     {
-        [HttpGet]
-        [Route("Acoes/Teste")]
-        public List<AcaoEmpresa> Empresas()
+        [HttpPost]
+        [Route("Acoes/Comprar")]
+        public RequestResponse Comprar(int idUsuario, int quantidade, int idAcao)
         {
-            using (var ctx = new SimuladorAcoesContext())
+            try
             {
-                return ctx.Empresa.ToList();
+                var handler = new ComprarAcaoRegra(idAcao, quantidade, idUsuario);
+
+                handler.ComprarAcao();
+
+                return new RequestResponse(1, "Sucesso");
+            }
+            catch (Exception ex)
+            {
+                return new RequestResponse(500, ex.Message);
             }
         }
 
