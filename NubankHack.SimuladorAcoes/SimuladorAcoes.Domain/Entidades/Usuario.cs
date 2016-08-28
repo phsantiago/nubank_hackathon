@@ -12,6 +12,6 @@ namespace SimuladorAcoes.Domain.Entidades
 
         public virtual ICollection<Conquista> Conquistas { get; set; }
         public virtual ICollection<Transacao> Transacoes { get; set; }
-
+        public virtual ICollection<EstoqueAcoes> EstoqueAcoes { get; set; }
     }
 }

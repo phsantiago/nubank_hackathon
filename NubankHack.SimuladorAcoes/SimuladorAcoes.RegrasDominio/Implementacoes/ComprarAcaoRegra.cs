@@ -15,7 +15,9 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes
         {
             _acaoCompradaId = idAcaoComprada;
             _qtdComprada = quantidadeComprada;
-            _idUsuarioComprador = idUsuarioComprador;   
+            _idUsuarioComprador = idUsuarioComprador;
+            if (quantidadeComprada < 1)
+                throw new Exception("Quantidade deve ser maior que 0");
         }
 
         public void ComprarAcao()
@@ -36,19 +38,45 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes
 
                 usuario.SaldoUsuario = usuario.SaldoUsuario - valorAGastar;
 
-                var transacao = new Transacao() {
-                    CompraOuVenda = TipoTransacao.Compra,
-                    ValorTransacao = acao.CotacaoRecente,
-                    AcaoComprada = acao,
-                    DataTransacao = DateTime.Now,
-                    Usuario = usuario,
-                    QtdTransacao = _qtdComprada,
-                };
+                AdicionarTransacao(acao, usuario, ctx);
 
-                ctx.Transacoes.Add(transacao);
+                AdicionarEstoque(usuario, acao, ctx);
 
                 ctx.SaveChanges();
             }
+        }
+
+        private void AdicionarEstoque(Usuario usuario, AcaoEmpresa acao, SimuladorAcoesContext ctx)
+        {
+            var existeEstoque = ctx.EstoqueAcoes.SingleOrDefault(x => x.UsuarioId == usuario.IdUsuario);
+            if(existeEstoque == null)
+            {
+                var novoItemEstoque = new EstoqueAcoes() {
+                    Acao = acao,
+                    Usuario = usuario,
+                    Quantidade = _qtdComprada
+                };
+                ctx.EstoqueAcoes.Add(novoItemEstoque);
+            }
+            else
+            {
+                existeEstoque.Quantidade += _qtdComprada;
+            }
+        }
+
+        private void AdicionarTransacao(AcaoEmpresa acao, Usuario usuario, SimuladorAcoesContext ctx)
+        {
+            var transacao = new Transacao()
+            {
+                CompraOuVenda = TipoTransacao.Compra,
+                ValorTransacao = acao.CotacaoRecente,
+                AcaoComprada = acao,
+                DataTransacao = DateTime.Now,
+                Usuario = usuario,
+                QtdTransacao = _qtdComprada,
+            };
+
+            ctx.Transacoes.Add(transacao);
         }
     }
 }

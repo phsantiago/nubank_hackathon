@@ -18,6 +18,7 @@ namespace SimuladorAcoes.Data.Context
         public IDbSet<Transacao> Transacoes { get; set; }
         public IDbSet<Usuario> Usuario { get; set; }
         public IDbSet<Noticia> Noticia { get; set; }
+        public IDbSet<EstoqueAcoes> EstoqueAcoes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -35,6 +36,7 @@ namespace SimuladorAcoes.Data.Context
             modelBuilder.Configurations.Add(new TransacaoDbConfig());
             modelBuilder.Configurations.Add(new UsuarioDbConfig());
             modelBuilder.Configurations.Add(new NoticiaDbConfiguration());
+            modelBuilder.Configurations.Add(new EstoqueAcoesDbConfig());
         }
     }
 }

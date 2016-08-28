@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementacoes\ComprarAcaoRegra.cs" />
+    <Compile Include="Implementacoes\ListarAcoesPertencentesAoUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

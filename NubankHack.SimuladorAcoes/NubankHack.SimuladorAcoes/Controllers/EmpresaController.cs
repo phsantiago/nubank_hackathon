@@ -2,9 +2,11 @@
 using SimuladorAcoes.Data.Context;
 using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace NubankHack.SimuladorAcoes.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class EmpresaController : ApiController
     {
         [HttpGet]

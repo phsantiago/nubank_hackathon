@@ -19,6 +19,7 @@ namespace SimuladorAcoes.Domain.Entidades
 
         public virtual ICollection<Transacao> Transacoes { get; set; }
         public virtual ICollection<Noticia> Noticias { get; set; }
+        public virtual ICollection<EstoqueAcoes> EstoqueAcoesUsuario { get; set; }
     }
 }
 

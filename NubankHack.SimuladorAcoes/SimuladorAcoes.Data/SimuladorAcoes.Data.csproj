@@ -52,6 +52,7 @@
     <Compile Include="Configurations\ConquistaDbConfig.cs" />
     <Compile Include="Configurations\DefinicaoConquistaDbConfig.cs" />
     <Compile Include="Configurations\EmpresaDbConfig.cs" />
+    <Compile Include="Configurations\EstoqueAcoesDbConfig.cs" />
     <Compile Include="Configurations\NoticiaDbConfiguration.cs" />
     <Compile Include="Configurations\TransacaoDbConfig.cs" />
     <Compile Include="Configurations\UsuarioDbConfig.cs" />
