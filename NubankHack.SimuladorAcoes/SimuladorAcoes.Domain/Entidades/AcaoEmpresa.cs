@@ -15,6 +15,7 @@ namespace SimuladorAcoes.Domain.Entidades
         public decimal CotacaoRecente { get; set; }
         public decimal Variacao { get; set; }
         public decimal UltimoFechamento { get; set; }
+        public string LogoEmpresaUrl { get; set; }
 
         public virtual ICollection<Transacao> Transacoes { get; set; }
 

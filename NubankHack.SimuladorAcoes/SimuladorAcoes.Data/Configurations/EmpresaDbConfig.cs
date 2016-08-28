@@ -1,10 +1,5 @@
 ﻿using SimuladorAcoes.Domain.Entidades;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimuladorAcoes.Data.Configurations
 {
@@ -13,6 +8,9 @@ namespace SimuladorAcoes.Data.Configurations
         public EmpresaDbConfig()
         {
             HasKey(x => x.IdEmpresa);
+
+            Property(x => x.LogoEmpresaUrl)
+                .HasMaxLength(200);
         }
     }
 }

@@ -1,10 +1,5 @@
 ﻿using SimuladorAcoes.Domain.Entidades;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimuladorAcoes.Data.Configurations
 {
@@ -14,7 +9,11 @@ namespace SimuladorAcoes.Data.Configurations
         {
             HasKey(x => x.IdUsuario);
 
+            Property(x => x.NomeUsuario)
+                .HasMaxLength(100);
 
+            Property(x => x.SenhaUsuario)
+                .HasMaxLength(100);
         }
     }
 }
