@@ -67,7 +67,7 @@ namespace SimuladorAcoes.RegrasDominio.Implementacoes
 
         private void AdicionarEstoque(Usuario usuario, AcaoEmpresa acao, SimuladorAcoesContext ctx)
         {
-            var existeEstoque = ctx.EstoqueAcoes.SingleOrDefault(x => x.UsuarioId == usuario.IdUsuario);
+            var existeEstoque = ctx.EstoqueAcoes.SingleOrDefault(x => x.UsuarioId == usuario.IdUsuario && x.EmpresaId == acao.IdEmpresa);
             if(existeEstoque == null)
             {
                 var novoItemEstoque = new EstoqueAcoes() {
