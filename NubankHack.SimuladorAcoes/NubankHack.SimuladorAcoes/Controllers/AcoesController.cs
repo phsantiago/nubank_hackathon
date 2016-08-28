@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SimuladorAcoes.Data.Context;
+using SimuladorAcoes.Domain.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,9 +13,12 @@ namespace NubankHack.SimuladorAcoes.Controllers
     {
         [HttpGet]
         [Route("Acoes/Teste")]
-        public string Teste()
+        public List<Empresa> Empresas()
         {
-            return "OK";
+            using (var ctx = new SimuladorAcoesContext())
+            {
+                return ctx.Empresa.ToList();
+            }
         }
 
     }
